@@ -1,0 +1,107 @@
+[
+    {
+        "id": "d335dad8.e0ff48",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b421efe0.d3307",
+        "type": "inject",
+        "z": "d335dad8.e0ff48",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "dbdd6765.5bede8"
+            ]
+        ]
+    },
+    {
+        "id": "dbdd6765.5bede8",
+        "type": "function",
+        "z": "d335dad8.e0ff48",
+        "name": "payload",
+        "func": "msg.headers={\n    deviceKey:\"HKLjwIxe47sjXhS3\"\n            };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "95c9bdc5.7640c",
+                "ad4d749e.1f3968"
+            ]
+        ]
+    },
+    {
+        "id": "95c9bdc5.7640c",
+        "type": "http request",
+        "z": "d335dad8.e0ff48",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DB1TNo8P/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 630,
+        "y": 240,
+        "wires": [
+            [
+                "a27e4e96.05715",
+                "c73cae76.99dab"
+            ]
+        ]
+    },
+    {
+        "id": "a27e4e96.05715",
+        "type": "http response",
+        "z": "d335dad8.e0ff48",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c73cae76.99dab",
+        "type": "debug",
+        "z": "d335dad8.e0ff48",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 780,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ad4d749e.1f3968",
+        "type": "http request",
+        "z": "d335dad8.e0ff48",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DB1TNo8P/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "x": 630,
+        "y": 180,
+        "wires": [
+            [
+                "a27e4e96.05715",
+                "c73cae76.99dab"
+            ]
+        ]
+    }
+]
